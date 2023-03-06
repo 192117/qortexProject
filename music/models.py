@@ -24,9 +24,10 @@ class Album(models.Model):
         help_text='Введите название альбома',
         max_length=150,
     )
-    artists = models.ManyToManyField(
+    artist = models.ForeignKey(
         Artist,
-        related_name='albums',
+        on_delete=models.CASCADE,
+        related_name='album',
         verbose_name='Артисты',
         help_text='Выберите артистов, которые участвуют в записи этого альбома',
     )
@@ -50,11 +51,9 @@ class Song(models.Model):
         help_text='Введите название песни',
         max_length=150,
     )
-    albums = models.ManyToManyField(
+    info = models.ManyToManyField(
         Album,
         through='Track',
-        verbose_name='Альбомы',
-        help_text='Выберите альбомы, в которых содержится данная песня',
     )
 
     def __str__(self):
@@ -77,6 +76,7 @@ class Track(models.Model):
     song = models.ForeignKey(
         Song,
         on_delete=models.CASCADE,
+        related_name='tracks',
         verbose_name='Песня',
         help_text='Выберите песню, которая содержится в данном треке',
     )
