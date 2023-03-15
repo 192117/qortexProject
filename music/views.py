@@ -57,4 +57,4 @@ class SongRUDView(generics.RetrieveUpdateDestroyAPIView):
 
 class TrackRUDView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Track.objects.all()
-    serializer_class = TrackListSerializer
+    serializer_class = TrackCreateSerializer

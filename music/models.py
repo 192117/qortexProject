@@ -7,6 +7,7 @@ class Artist(models.Model):
         verbose_name='Название исполнителя',
         help_text='Введите название исполнителя',
         max_length=150,
+        unique=True,
     )
 
     def __str__(self):
@@ -23,6 +24,7 @@ class Album(models.Model):
         verbose_name='Название альбома',
         help_text='Введите название альбома',
         max_length=150,
+        unique=True,
     )
     artist = models.ForeignKey(
         Artist,
@@ -50,6 +52,7 @@ class Song(models.Model):
         verbose_name='Название песни',
         help_text='Введите название песни',
         max_length=150,
+        unique=True,
     )
     info = models.ManyToManyField(
         Album,
