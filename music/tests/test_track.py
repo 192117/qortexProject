@@ -36,7 +36,7 @@ class TestTrackAPIViews:
         assert response.status_code == status.HTTP_200_OK
         assert len(response.json()) == 0
 
-    def test_list_with_track(self, song, album):
+    def test_list_with_track(self, track, song, album):
 
         response = client.get('/api/v1/track/')
 
